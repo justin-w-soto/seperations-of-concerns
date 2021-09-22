@@ -4,6 +4,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
+
 jest.mock('twilio', () => () => ({
   messages: {
     create: jest.fn()
@@ -28,7 +29,25 @@ describe('03_separation-of-concerns-demo routes', () => {
   });
 
   /* CREATE TEST ROUTES FOR GET ALL, GET ID, PATCH, DELETE*/
-  // it('gets all orders in the database', async () => {
+  it('gets all orders in the database', async () => {
+    const order = await order.insert({ quantity: 10 });
+
+    return request(app)
+      .get('/api/v1/orders')
+      .then((res) => {
+        expect(res.body).toEqual([order]);
+      });
+  });
+
+  // it('gets order by id', async () => {
+
+  // });
+
+  // it('PATCH', async () => {
+
+  // });
+
+  // it('DELETES orders in the database', async () => {
 
   // });
 });

@@ -3,6 +3,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Order = require('../lib/models/Order');
 
 
 jest.mock('twilio', () => () => ({
@@ -30,7 +31,7 @@ describe('03_separation-of-concerns-demo routes', () => {
 
   /* CREATE TEST ROUTES FOR GET ALL, GET ID, PATCH, DELETE*/
   it('gets all orders in the database', async () => {
-    const order = await order.insert({ quantity: 10 });
+    const order = await Order.insert({ quantity: 10 });
 
     return request(app)
       .get('/api/v1/orders')

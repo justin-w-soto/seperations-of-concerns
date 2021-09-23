@@ -45,9 +45,9 @@ describe('03_separation-of-concerns-demo routes', () => {
     const order = await Order.insert({ quantity: 10 });
 
     return request(app)
-      .get('/api/v1/orders')
+      .get(`/api/v1/orders/${order.id}`)
       .then((res) => {
-        expect(res.body).toEqual();
+        expect(res.body).toEqual(order);
       });
   });
 

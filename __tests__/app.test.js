@@ -18,6 +18,7 @@ describe('03_separation-of-concerns-demo routes', () => {
   });
 
   it('creates a new order (POST) in our database and sends a text message', async () => {
+
     return request(app)
       .post('/api/v1/orders')
       .send({ quantity: 10 })
@@ -40,9 +41,15 @@ describe('03_separation-of-concerns-demo routes', () => {
       });
   });
 
-  // it('gets order by id', async () => {
+  it('gets order by id', async () => {
+    const order = await Order.insert({ quantity: 10 });
 
-  // });
+    return request(app)
+      .get('/api/v1/orders')
+      .then((res) => {
+        expect(res.body).toEqual();
+      });
+  });
 
   // it('PATCH', async () => {
 

@@ -74,4 +74,9 @@ describe('03_separation-of-concerns-demo routes', () => {
         expect(res.body)!==(order);
       })
   });
+
+  afterAll(() => {
+    pool.end();
+  });
 });
+

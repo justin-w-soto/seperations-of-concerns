@@ -1,4 +1,4 @@
-
+name: Jest Tests
 
 on: [push]
 jobs:
@@ -18,3 +18,4 @@ jobs:
       env:
         CI: true
         DATABASE_URL: postgres://alchemy:alchemy@postgres:5432/alchemy
+
